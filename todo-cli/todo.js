@@ -19,10 +19,11 @@ const todoList = () => {
         return all.filter((item) => item.dueDate > today );
       };
     
+  
     const toDisplayableList = (list) => {
-        let displayString = ""
-        list.forEach((item) => {
-          const checkbox = item.completed ? "[x]" : "[ ]"
+      return list
+        .map((item) => {
+          const checkbox = item.completed ? "[x]" : "[ ]";
           let dueDate = ""
           if (item.dueDate) {
             const itemDueDate = new Date(item.dueDate)
@@ -30,13 +31,15 @@ const todoList = () => {
                 dueDate = `${formattedDate(itemDueDate)}`
             }
           }
-          displayString += `${checkbox} ${item.title} ${dueDate}\n`
+          return `${checkbox} ${item.title} ${dueDate}`;
         })
-        return displayString
-      }
-      
-      
-
+        .join("\n");
+    };
+  
+    const formattedDate = (date) => {
+      return date.toISOString().split("T")[0];
+    };
+  
     return {
       all,
       add,
@@ -71,7 +74,7 @@ todos.add({ title: 'Submit assignment', dueDate: yesterday, completed: false })
 todos.add({ title: 'Pay rent', dueDate: today, completed: true })
 todos.add({ title: 'Service Vehicle', dueDate: today, completed: false })
 todos.add({ title: 'File taxes', dueDate: tomorrow, completed: false })
-todos.add({ title: 'Pay electric bill', dueDate: tomorrow, completed:false })
+todos.add({ title: 'Pay electric bill', dueDate: tomorrow, completed: false })
 
 console.log("My Todo-list\n")
 
