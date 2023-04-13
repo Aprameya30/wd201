@@ -21,7 +21,7 @@ describe('todoList', () => {
 
   it('retrieves overdue items', () => {
     todos.add({ title: 'Overdue', dueDate: '2023-04-10' });
-    todos.add({ title: 'Not_Overdue', dueDate: '2023-04-20' });
+    todos.add({ title: 'Not Overdue', dueDate: '2023-04-20' });
     const overdue = todos.overdue();
     expect(overdue.length).toEqual(1);
     expect(overdue[0].title).toEqual('Overdue');
@@ -29,7 +29,7 @@ describe('todoList', () => {
 
   it('retrieves due today items', () => {
     todos.add({ title: 'Due_Today', dueDate: '2023-04-13' });
-    todos.add({ title: 'Not_Due Today', dueDate: '2023-04-20' });
+    todos.add({ title: 'Not Due_Today', dueDate: '2023-04-20' });
     const dueToday = todos.dueToday();
     expect(dueToday.length).toEqual(1);
     expect(dueToday[0].title).toEqual('Due_Today');
@@ -37,7 +37,7 @@ describe('todoList', () => {
 
   it('retrieves due later items', () => {
     todos.add({ title: 'Due_Later', dueDate: '2023-04-20' });
-    todos.add({ title: 'Not_Due Later', dueDate: '2023-04-13' });
+    todos.add({ title: 'Not Due_Later', dueDate: '2023-04-13' });
     const dueLater = todos.dueLater();
     expect(dueLater.length).toEqual(1);
     expect(dueLater[0].title).toEqual('Due_Later');
